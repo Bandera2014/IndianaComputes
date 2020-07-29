@@ -1,5 +1,6 @@
 #Python MorseCode Lab Starter
-
+alphabet=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+patterns=[".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
 def morseA():
     return ".-"
 def morseE():
@@ -8,7 +9,6 @@ def morseO():
     return "---"
 def morseT():
     return "-"
-
 def testLoop():
     print(morseA() + morseE())
     print(morseT()+morseT()+morseE() + morseT()+morseT()+morseE())
@@ -16,23 +16,14 @@ def testLoop():
 
 def translateToMC(message):
     msg=""
-    for i in range(len(message)):
-        if message[i].tolower()=="a":
-            msg+=morseA()
-        elif message[i].tolower()=="e":
-            msg+=morseE()
-        elif message[i].tolower()=="o":
-            msg+=morseO()
-        elif message[i].tolower()=="t":
-            msg+=morseT()
+    for i in message.lower():
+        msg+=patterns[alphabet.index(i)]
     print("The message '{}' in morse code is '{}'".format(message,msg))
 
-'''
 while True:    
     user_input = input("Enter a message using only a,t,e, and o or -1 to exit: ")    
-    if(user_input == "-1"):        
-        break    
-    print("The message '{}' in morse code is '{}'".format(user_input, "your morse code will go here!"))
+    if(user_input == "-1"):   
+        break
+    translateToMC(user_input)
 
 print("Finished with morse code")
-'''
